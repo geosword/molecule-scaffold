@@ -1,0 +1,4 @@
+---
+# roles your role requires to run or must be run in conjuction with
+#- src: geerlingguy.nginx
+#- src: geerlingguy.php

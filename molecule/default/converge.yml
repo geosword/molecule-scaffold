@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include the role you are developing here"
+      include_role:
+        apply:
+          become: true
+        name: "rolename"
