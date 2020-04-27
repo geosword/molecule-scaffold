@@ -4,32 +4,29 @@
   tasks:
 
   # NOTE that verify.yml does not inherit values from your playbook in anyway, they are seperate playbooks and run seperately.
-  #  - name: set some stuff
-  #    set_fact:
-  #      nginxconf: "/etc/nginx/sites-enabled"
-  #      homedir: "{{ ansible_env.HOME }}"
+  - name: set some stuff
+    set_fact:
+      homedir: "{{ ansible_env.HOME }}"
+#      package_list_command: "pacman -Q"
+#      nginxconf: "/etc/nginx/sites-enabled"
+
+#  - name: set some more stuff
+#    set_fact:
+#      venvhome: "{{ homedir }}/.virtualenvs/neovim"
 
   - name: define packages, files, directories and other stuff you want to check lots of
     set_fact:
-#     required_files:
-#       - path: "/etc/nginx/dhparams.pem"
-#         isdir: false
-#         mode: '0700'
-#       - path: "/etc/nginx/redirects"
-#         isdir: true
-#     required_packages:
-#       - "nginx-full"
-#     required_ports:
-#       # read the note in verify_standard as to why you need to check the listening program is "docker-proxy"
-#       8080:
-#         name: docker-proxy
-#       8443:
-#         name: docker-proxy
-#     required_services:
-#       nginx.service:
-#         state: running
-#         status: enabled
-
+      required_files:
+#        - path: "{{ homedir }}/.config/nvim/airline.vim"
+#          isdir: false
+      required_packages:
+#        - "neovim"
+      required_pip_packages:
+#        - package: "powerline-status"
+#          venv: '{{ venvhome }}/bin/pip'
+#      required_services:
+#      required_ports:
+#
   - name: include the standard verifier
     include_tasks: verify_standard.yml
 
