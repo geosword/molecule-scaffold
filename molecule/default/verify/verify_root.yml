@@ -30,7 +30,7 @@
     - required_packages|length>0
 
 - name: include service check if appropriate
-  include_tasks: verify/verify_services.yml
+  include_tasks: verify/verify_service.yml
   when:
     - required_services is defined
     - required_services != None
