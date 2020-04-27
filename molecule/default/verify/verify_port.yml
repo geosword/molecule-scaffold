@@ -1,4 +1,12 @@
 ---
+# - name: define ports to check
+#   set_fact:
+#      required_ports:
+#        80:
+#          name: docker-proxy
+#        443:
+#          name: docker-proxy
+
 - name: populate listening ports
   listen_ports_facts:
   delegate_to: localhost

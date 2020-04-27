@@ -1,4 +1,12 @@
 ---
+# - name: define files to check
+#    set_fact:
+#      required_files:
+#        - path: "{{ homedir }}/.config/nvim/airline.vim"
+#          isdir: false
+#          mode: '0755'
+#          owner: 'keith'
+
 - name: file_index
   set_fact:
     file_index: "{{ file_index| default({}) | combine( {item.path: item} ) }}"

@@ -1,4 +1,11 @@
 ---
+# - name: define packages, files, directories and other stuff you want to check lots of
+#   set_fact:
+#      required_services:
+#        docker.droneciserver.service:
+#          state: "running"
+#          status: "enabled"
+
 - name: if required_services is not set OR is empty, then we need to define it as an empty dict
   set_fact:
     required_services: {}

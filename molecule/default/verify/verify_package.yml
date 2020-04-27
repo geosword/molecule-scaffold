@@ -1,4 +1,9 @@
 ---
+# - name: define packages to check
+#    set_fact:
+#      required_packages:
+#        - "important_package"
+
 - name: Get installed packages (Debian, redhat & others)
   package_facts:
     manager: auto

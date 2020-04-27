@@ -1,4 +1,7 @@
 ---
+# This is the file from which all standard verification plays are called.
+# Check each one for an example of what variables to set
+
 - name: if required_files is not set OR is empty, then we need to define it as an empty dict
   set_fact:
     required_files: {}
