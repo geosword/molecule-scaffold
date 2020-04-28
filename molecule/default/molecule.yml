@@ -32,7 +32,7 @@ dependency:
 #    prepare: prepare.yml
 #verifier:
 #  name: ansible
-# edit .yamllint to change linting settings
+## edit .yamllint to change linting settings
 #lint: |
 #  set -e
 #  yamllint .
