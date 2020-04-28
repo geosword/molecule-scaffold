@@ -1,11 +1,11 @@
 ---
 dependency:
   name: galaxy
-  #  options:
-  #    role-file: requirements.yml
-driver:
-  name: docker
-platforms:
+#   options:
+#     role-file: requirements.yml
+#driver:
+#  name: docker
+#platforms:
 #  - name: ansible.web-aws
 #    image: molecule_debian:buster
 #    dockerfile: Dockerfile.j2
@@ -22,13 +22,18 @@ platforms:
 #    published_ports:
 #      - 0.0.0.0:8080:80/tcp
 #      - 0.0.0.0:8443:8443/tcp
-## privileged to get systemd working, if you dont need to do systemd stuff
+## privileged to get systemd working
 #    privileged: true
 ## pre_build_image: true means PULL from docker hub
 #    pre_build_image: false
-provisioner:
-  name: ansible
-  #  playbooks:
-  #    prepare: prepare.yml
-verifier:
-  name: ansible
+#provisioner:
+#  name: ansible
+#  playbooks:
+#    prepare: prepare.yml
+#verifier:
+#  name: ansible
+# edit .yamllint to change linting settings
+#lint: |
+#  set -e
+#  yamllint .
+#  ansible-lint
