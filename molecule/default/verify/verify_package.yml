@@ -1,9 +1,9 @@
----
-# - name: define packages to check
+# EXAMPLE
+#  - name: define packages, files, directories and other stuff you want to check lots of
 #    set_fact:
-#      required_packages:
-#        - "important_package"
-
+#     required_packages:
+#       - "nginx-full"
+---
 - name: Get installed packages (Debian, redhat & others)
   package_facts:
     manager: auto

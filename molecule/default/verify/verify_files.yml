@@ -1,12 +1,12 @@
----
-# - name: define files to check
+# EXAMPLE
+#  - name: define packages, files, directories and other stuff you want to check lots of
 #    set_fact:
 #      required_files:
-#        - path: "{{ homedir }}/.config/nvim/airline.vim"
-#          isdir: false
+#        - path: "/etc/nginx/dhparams.pem"
+#          isdir: true
 #          mode: '0755'
-#          owner: 'keith'
-
+#          owner: 'www-data'
+---
 - name: file_index
   set_fact:
     file_index: "{{ file_index| default({}) | combine( {item.path: item} ) }}"

@@ -1,10 +1,10 @@
----
-# - name: define pip packages to check
-#   set_fact:
+# EXAMPLE
+#  - name: define packages, files, directories and other stuff you want to check lots of
+#    set_fact:
 #      required_pip_packages:
 #        - package: "boto3"
 #          venv: '{{ venvhome }}/bin/pip'
-
+---
 - name: venv_index
   set_fact:
     venv_index: "{{ venv_index| default({}) | combine( {item.venv: item} ) }}"

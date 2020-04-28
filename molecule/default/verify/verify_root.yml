@@ -1,7 +1,6 @@
----
-# This is the file from which all standard verification plays are called.
-# Check each one for an example of what variables to set
+# This is the play from which all other verification plays are called.
 
+---
 - name: if required_files is not set OR is empty, then we need to define it as an empty dict
   set_fact:
     required_files: {}
@@ -37,7 +36,7 @@
     - required_services|length>0
 
 - name: include port check if appropriate
-  include_tasks: verify/verify_ports.yml
+  include_tasks: verify/verify_port.yml
   when:
     - required_ports is defined
     - required_ports != None

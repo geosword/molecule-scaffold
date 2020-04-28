@@ -1,11 +1,20 @@
+# EXAMPLE
+#  - name: define packages, files, directories and other stuff you want to check lots of
+#    set_fact:
+#     required_ports:
+#       - port: 80
+#         name: nginx
+#       - port: 443
+#         name: nginx
 ---
-# - name: define ports to check
-#   set_fact:
-#      required_ports:
-#        80:
-#          name: docker-proxy
-#        443:
-#          name: docker-proxy
+- name: port_index
+  set_fact:
+    # The item.port|int there is important, without that, we need to type cast all other item.port instances
+    # to string, otherwise ansible does not see the element as existing, and therefore in accordance with the "when"
+    # on the assert instance to check the port is listening, is skipped. This (to the passing eye) could be seen as
+    # "test success" whether the port was showing as listening or not
+    port_index: "{{ port_index| default({}) | combine( {item.port|int: item} ) }}"
+  loop: "{{ required_ports|flatten(levels=1) }}"
 
 - name: populate listening ports
   listen_ports_facts:
@@ -16,12 +25,13 @@
 
 - name: populate listening port facts - when testing NOT with docker container
   listen_ports_facts:
+  become: true
   when:
     - ansible_virtualization_type != 'docker'
 
 - name: check programs a listening on the right ports
   assert:
-    that: "{{ item.name == required_ports[item.port].name }}"
-    msg: "port {{ item.port }} is not being listened on by {{ required_ports[item.port].name }} as defined in required_ports"
+    that: "{{ item.name == port_index[item.port].name }}"
+    msg: "port {{ item.port }} is not being listened on by {{ port_index[item.port].name }} as defined in required_ports"
   loop: "{{ ansible_facts.tcp_listen|flatten(levels=1) }}"
-  when: "required_ports[item.port] is defined"
+  when: "port_index[item.port] is defined"
