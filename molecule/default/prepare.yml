@@ -1,9 +1,8 @@
 ---
-# A place to prep your container / vm for something your role will rely on but not actually do. You might consider baking
-# it into your container / vm image if its not sensitive
-#- hosts: all
-#  gather_facts: false
-#  tasks:
+# A place to prep your container / vm for something your role will rely on but not actually do. You might consider baking it into your container / vm image if its not sensitive
+- hosts: all
+  gather_facts: false
+  tasks:
 #    - name: copy the certs over
 #      copy:
 #        src: ../../files/ssl
