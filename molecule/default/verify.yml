@@ -32,7 +32,7 @@
 #          name: docker-proxy
 #
   - name: include the standard verifier
-    include_tasks: verify/verify_root.yml
+    include_tasks: ../default/tasks/verify_root.yml
 
 # WARNING: READ THIS if you are running port checks
 # If we want to get the "listening ports", then assuming we are using a docker container to test, then we need to run

@@ -4,6 +4,7 @@
 #      required_files:
 #        - path: "/etc/nginx/dhparams.pem"
 #          isdir: true
+#          islink: false
 #          mode: '0755'
 #          owner: 'www-data'
 ---
@@ -34,6 +35,16 @@
   loop: "{{ required_files_stat.results|flatten(levels=1) }}"
   when:
     - file_index[item.stat.path].mode is defined
+
+- name: check file is a symlink
+  assert:
+    that: "'{{ file_index[item.stat.path].islink }}' == '{{ item.stat.islink }}'"
+    msg: >
+      {{ item.invocation.module_args.path }} type is not correct. Its currently NOT a link {{ item.stat.islink }}
+      and it should be according to required_files {{ file_index[item.stat.path].islink }}
+  loop: "{{ required_files_stat.results|flatten(levels=1) }}"
+  when:
+    - file_index[item.stat.path].islink is defined
 
 - name: check files are files and directories are directories
   assert:

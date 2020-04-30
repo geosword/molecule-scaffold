@@ -1,3 +1,5 @@
+# If you tag your "include_role" and there is more than one, you can skip specific roles with:
+# $ ANSIBLE_SKIP_TAGS="geerlingguy.nginx,geerlingguy.php" molecule converge
 ---
 - name: Converge
   hosts: all
