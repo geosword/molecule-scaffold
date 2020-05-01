@@ -46,6 +46,16 @@
   when:
     - file_index[item.stat.path].islink is defined
 
+- name: check symlink points to the correct place
+  assert:
+    that: "'{{ file_index[item.stat.path].linktarget }}' == '{{ item.stat.lnk_target }}'"
+    msg: >
+      {{ item.invocation.module_args.path }} target is not correct. Its currently {{ item.stat.lnk_target }}
+      and should be {{ file_index[item.stat.path].linktarget }}
+  loop: "{{ required_files_stat.results|flatten(levels=1) }}"
+  when:
+    - file_index[item.stat.path].linktarget is defined
+
 - name: check files are files and directories are directories
   assert:
     that: "'{{ file_index[item.stat.path].isdir }}' == '{{ item.stat.isdir }}'"

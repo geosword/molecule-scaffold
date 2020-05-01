@@ -12,6 +12,7 @@
         required_files:
           - path: "/home/dylanh/development/molecule-scaffold/linked.md"
             islink: true
+            linktarget: READE.md
             owner: 'dylanh'
 #        required_packages:
 #          - "important_package"
