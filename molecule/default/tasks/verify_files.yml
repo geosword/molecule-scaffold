@@ -3,7 +3,7 @@
 #    set_fact:
 #      required_files:
 #        - path: "/etc/nginx/dhparams.pem"
-#          isdir: true
+#          isdir: false
 #          islink: false
 #          mode: '0755'
 #          owner: 'www-data'

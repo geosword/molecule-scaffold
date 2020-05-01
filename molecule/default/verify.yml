@@ -16,6 +16,7 @@
 #          isdir: false
 #          mode: '0755'
 #          owner: 'keith'
+#          islink: false
 #      required_packages:
 #        - "important_package"
 #      required_pip_packages:
