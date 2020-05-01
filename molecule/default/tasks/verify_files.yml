@@ -38,9 +38,9 @@
 
 - name: check file is a symlink
   assert:
-    that: "'{{ file_index[item.stat.path].islink }}' == '{{ item.stat.islink }}'"
+    that: "'{{ file_index[item.stat.path].islink }}' == '{{ item.stat.islnk }}'"
     msg: >
-      {{ item.invocation.module_args.path }} type is not correct. Its currently NOT a link {{ item.stat.islink }}
+      {{ item.invocation.module_args.path }} type is not correct. Its currently NOT a link {{ item.stat.islnk }}
       and it should be according to required_files {{ file_index[item.stat.path].islink }}
   loop: "{{ required_files_stat.results|flatten(levels=1) }}"
   when:
