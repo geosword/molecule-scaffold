@@ -27,10 +27,10 @@
 #          state: "running"
 #          status: "enabled"
 #      required_ports:
-#        80:
-#          name: docker-proxy
-#        443:
-#          name: docker-proxy
+#       - port: 8080
+#         name: docker-proxy
+#       - port: 8443
+#         name: docker-proxy
 #
   - name: include the standard verifier
     include_tasks: ../default/tasks/verify_root.yml
