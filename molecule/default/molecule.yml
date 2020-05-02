@@ -3,7 +3,6 @@ dependency:
   name: galaxy
 #  options:
 #    role-file: requirements.yml
-#  options:
 #    force: false
 #driver:
 #  name: docker
