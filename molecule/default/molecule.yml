@@ -3,11 +3,11 @@ dependency:
   name: galaxy
 #  options:
 #    role-file: requirements.yml
+#  options:
+#    force: false
 #driver:
 #  name: docker
 #  # Dont resolve dependencies unless you have to
-#  options:
-#    force: false
 #platforms:
 #  - name: ansible.web-aws
 #    image: molecule_debian:buster
